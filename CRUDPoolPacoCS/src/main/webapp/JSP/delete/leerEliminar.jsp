@@ -9,9 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Elegir ave a eliminar</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>SELECCIONE UN O VARIAS AVES PARA ELIMINAR</h1>
+
+        <form action="<%=request.getContextPath()%>/Realizar" method="post">
+            <button type="submit" value="cancelar" name="eliminarAve">Cancelar</button>
+            <button type="submit" value="aceptar" name="eliminarAve">Eliminar</button>
+        </form>
     </body>
 </html>

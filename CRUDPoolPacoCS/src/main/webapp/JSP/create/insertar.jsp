@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Vas a insertar...</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>¿ESTÁS SEGURO QUE QUIERES CREAR ESTE AVE?</h1>
     </body>
 </html>

@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Se van a eliminar...</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>¿ESTÁS SEGURO QUE DESEAS ELIMINAR ESTAS AVES?</h1>
     </body>
 </html>

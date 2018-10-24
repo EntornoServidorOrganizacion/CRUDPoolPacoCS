@@ -9,9 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Aves a actualizadar</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>ELIJA LA O LAS AVES QUE DESEA ACTUALIZAR<h1>
+        <form action="<%=request.getContextPath()%>/Realizar" method="post">
+            <button type="submit" value="cancelar" name="actualizarAve">Cancelar</button>
+            <button type="submit" value="aceptar" name="actualizarAve">Actualizar</button>
+        </form>
     </body>
 </html>

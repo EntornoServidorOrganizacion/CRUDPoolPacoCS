@@ -32,18 +32,7 @@ public class Realizar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Realizar</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Realizar at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,6 +62,39 @@ public class Realizar extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
+        String url = "";
+
+        //CREAR/INSERTAR AVE
+        if (request.getParameter("crearAve") != null) {
+            if (request.getParameter("crearAve").equals("aceptar")) {
+                url = "JSP/create/insertar.jsp";
+            } else {
+                url = "index.jsp";
+            }
+        }
+
+        //ELIMINAR AVE
+        if (request.getParameter("eliminarAve") != null) {
+            if (request.getParameter("eliminarAve").equals("aceptar")) {
+                url = "JSP/delete/eliminar.jsp";
+            } else {
+                url = "index.jsp";
+            }
+        }
+        
+        
+        //ACTUALIZAR AVE
+        if (request.getParameter("actualizarAve") != null) {
+            if (request.getParameter("actualizarAve").equals("aceptar")) {
+                url = "JSP/update/actualizar.jsp";
+            } else {
+                url = "index.jsp";
+            }
+        }
+
+        //redirigimos a la página correspondiente
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**

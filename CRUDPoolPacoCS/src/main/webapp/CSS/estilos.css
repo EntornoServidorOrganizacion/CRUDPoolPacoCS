@@ -1,0 +1,63 @@
+/*
+COLORES DE LA WEB
+Gris oscuro: #7D7F7D
+Verde claro: #ADFFB2
+Blanco roto (fondo html): #FAFFFA
+Verde oscuro (fondo body): #577F59
+Gris claro: #C8CCC8
+*/
+
+html{
+    background: #FAFFFA;
+    font: 150% sans-serif;
+}
+
+body{
+    width: 80%;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    background: #577F59;
+    color: #FAFFFA;
+    padding: 5%;
+    border-radius: 150px 5px 150px 5px;
+}
+
+#opcionesIniciales{
+    float: left;
+}
+
+#opcionesIniciales a, ol{
+    color: #FAFFFA;
+    text-decoration: none;
+    font-size: 40px;
+    transition: 0.3s;
+}
+#opcionesIniciales a:hover{
+    color: #FAFFFA;
+    text-decoration: none;
+    font-size: 50px;
+}
+
+#pajarosIndex{
+    width: 80%;
+    height: auto;
+    float: right;
+    margin-right: -35%;
+    margin-top: -8%;
+}
+
+button{
+    background: none;
+    border: 0;
+    color: #FAFFFA;
+    font-size: 40px;
+    transition: 0.3s;
+}
+button:hover{
+    color: #FAFFFA;
+    text-decoration: none;
+    font-size: 50px;
+}
