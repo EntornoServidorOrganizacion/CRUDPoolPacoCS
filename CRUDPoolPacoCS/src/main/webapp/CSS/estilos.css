@@ -14,7 +14,8 @@ html{
 
 body{
     width: 80%;
-    height: 400px;
+    /*height: 400px;*/
+    height: auto;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 5%;
@@ -42,10 +43,10 @@ body{
 }
 
 #pajarosIndex{
-    width: 80%;
+    width: 70%;
     height: auto;
     float: right;
-    margin-right: -35%;
+    margin-right: -10%;
     margin-top: -8%;
 }
 
@@ -61,3 +62,27 @@ button:hover{
     text-decoration: none;
     font-size: 50px;
 }
+
+/*boton insertar, eliminar, actualizar*/
+#insertar, #eliminar, #actualizar{
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+table {
+   width: 100%;
+   border-collapse: separate;
+   border-spacing: 5px;
+   background: #ADFFB2;
+   color: #fff;
+}
+td{
+   color: black;
+   background: white;
+}
+
+#listadoActualizar, #listadoEliminar{
+    font-size: 30px;
+    margin-left: 2%;
+}
+

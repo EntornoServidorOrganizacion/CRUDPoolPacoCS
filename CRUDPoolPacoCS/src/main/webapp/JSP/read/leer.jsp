@@ -12,29 +12,30 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="CSS/normalizer.css">
+        <link rel="stylesheet" type="text/css" href="CSS/estilos.css">
+        <title>Estas son las aves que hay</title>
     </head>
     <body>
         <h2>Listado de todas las aves de la base de datos</h2>
-            <table>
+        <form action="ControladorFinal" method="post">
+            <table border = 1>
                 <%
                     List<Ave> arrayAves = (ArrayList<Ave>) request.getAttribute("aves");
                     for (Ave ave : arrayAves) {
                 %>
-                <tr>
+                <tr id="leerTabla">
                     <td><%=ave.getAnilla()%></td>
                     <td><%=ave.getEspecie()%></td>
                     <td><%=ave.getLugar()%></td>
-                    <td><%=ave.getFecha()%></td>
+                    <td><%=ave.getFechaString()%></td>
                 </tr>
                 <%
                     }
                 %>
             </table>
-
-
-
             <br />
-            <p><a href="<%= request.getContextPath()%>">Menú</a></p>
+            <button type="submit" value="menu" name="operacion">Menú</button>
+            </form>
     </body>
 </html>

@@ -9,9 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="CSS/normalizer.css">
+        <link rel="stylesheet" type="text/css" href="CSS/estilos.css">
         <title>Aves eliminadas</title>
     </head>
     <body>
-        <h1>SE HA/HAN ELIMINADO LAS AVES:</h1>
+        <h1>SE HA/HAN ELIMINADO LAS AVEAVES SELECCIONADAS</h1>
+        <form action="ControladorFinal" method="post">
+            <button type="submit" value="menu" name="operacion">Menú</button>
+        </form>
     </body>
 </html>

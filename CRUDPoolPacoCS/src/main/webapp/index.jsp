@@ -16,18 +16,18 @@
     <body>
         <h1>Bienvenido al maravilloso mundo de las aves, elija una opción:</h1>
 
-        <div id="opcionesIniciales">
+        
             <img id="pajarosIndex" src="IMG/pajaros.png">
             <form action="Operacion" method="post">
                 <ol>
-                    <li><button type="submit" value="Insertar" name="operacion"/>Insertar</li>
-                    <li><button type="submit" value="Visualizar" name="operacion"/>Visualizar</li>
-                    <li><button type="submit" value="Actualizar" name="operacion"/>Actualizar</li>
-                    <li><button type="submit" value="Eliminar" name="operacion"/>Eliminar</li>
+                    <li><button type="submit" value="Insertar" name="operacion">Insertar ave</button></li>
+                    <li><button type="submit" value="Visualizar" name="operacion">Visualizar aves</button></li>
+                    <li><button type="submit" value="Actualizar" name="operacion">Actualizar ave</button></li>
+                    <li><button type="submit" value="Eliminar" name="operacion">Eliminar aves</button></li>
                 </ol>
                 
                 </form>
             
-        </div>
+        
     </body>
 </html>

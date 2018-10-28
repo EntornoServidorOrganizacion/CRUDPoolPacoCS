@@ -6,6 +6,7 @@
 package es.albarregas.beans;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  *
@@ -15,7 +16,8 @@ public class Ave implements Serializable{
     private String anilla;
     private String especie;
     private String lugar;
-    private String fecha;
+    private Date fecha; //NO SE USA POR AHORA
+    private String fechaString;
 
     /**
      * @return the anilla
@@ -62,15 +64,29 @@ public class Ave implements Serializable{
     /**
      * @return the fecha
      */
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
     /**
      * @param fecha the fecha to set
      */
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    /**
+     * @return the fechaString
+     */
+    public String getFechaString() {
+        return fechaString;
+    }
+
+    /**
+     * @param fechaString the fechaString to set
+     */
+    public void setFechaString(String fechaString) {
+        this.fechaString = fechaString;
     }
     
     

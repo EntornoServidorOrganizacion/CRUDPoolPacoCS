@@ -52,75 +52,128 @@ public class Concluir extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
 
-        Connection conexion = null;
-        Statement statement = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        String sql = null;
+        if (request.getParameter("operacion") != null) {
+            switch (request.getParameter("operacion")) {
+                case "Actualizar":
+                    /**
+                     * al pulsar el botón de actualizar, los nuevos datos introducidos
+                     * se actualizan en la bbdd llamando al método actualizar()
+                     * Si se pulsa en cancelar vuelve al inicio
+                     */
+                    actualizar(request, response);
+                    if (request.getParameter("operacion").equals("cancelar")) {
+                        request.getRequestDispatcher("ControladorFinal").forward(request, response);
+                    }
+                    break;
+                case "Eliminar":
+                    /**
+                     * al pulsar el botón de eliminar, se eliminan las aves
+                     * previamente seleccionadas
+                     * Si se pulsa en cancelar vuelve al inicio
+                     */
+                    eliminar(request, response);
+                    if (request.getParameter("operacion").equals("cancelar")) {
+                        request.getRequestDispatcher("ControladorFinal").forward(request, response);
+                    }
+                    break;
+                case "cancelar":
+                    /**
+                     * al pulsar el botón de cancelar en cualquier página jsp,
+                     * nos dirigirá al ControladorFinal (es un servlet) para
+                     * dirigir el flujo de la aplicación
+                     */
+                    request.getRequestDispatcher("ControladorFinal").forward(request, response);
+                    break;
+            }//fin switch            
+        }//fin if
 
-        //Objeto(beans) y List
-        Ave ave = null;
-        List<Ave> arrayAves = null;
-
-        String url = null;
-        try {
-            conexion = Conexion.crearConexion();
-
-
-            /**
-             * Cuando seleccionamos la opción visualizar en el index, pasa por el 
-             * controlador Operacion que reedirige a este controlador y este controlador
-             * hace la sentencia sql y pasa por petición los datos al JSP que se llama
-             * leer.jsp
-             */
-            if (request.getAttribute("operacion").equals("leer")) {
-                sql = "select * from aves";
-                statement = conexion.createStatement();
-                resultSet = statement.executeQuery(sql);//pasamos la sentencia sql
-                arrayAves = new ArrayList(); //ahora es cuando creamos el arrayList
-                url = "/JSP/read/leer.jsp";
-
-                while (resultSet.next()) {
-
-                    ave = new Ave(); //ahora es cuando creamos el objeto ave
-                    ave.setAnilla(resultSet.getString("anilla"));
-                    ave.setEspecie(resultSet.getString("especie"));
-                    ave.setLugar(resultSet.getString("lugar"));
-                    ave.setFecha(resultSet.getString("fecha"));
-                    arrayAves.add(ave);//añadimos las aves que encuentre en la tabla en el arrayList
-                }
-                //pasamos por petición
-                request.setAttribute("aves", arrayAves);
-            }
-
-            //redirigimos a la página correspondiente
-            request.getRequestDispatcher(url).forward(request, response);
-        } catch (SQLException ex) {
-            System.out.println("Error al crear la conexión");
-            ex.printStackTrace();
-        } finally {
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            try {
-                if (statement != null) {
-                    preparedStatement.close();
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            try {
-                if (conexion != null) {
-                    Conexion.cerrarConexion(conexion);
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        }
     }
 
-}
+    /**
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     * 
+     * Este método actualiza los datos el ave seleccionada
+     */
+    public void actualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String url = null;
+        DataSource datasource = null;
+        Connection conexion = null;
+        PreparedStatement preparedStatement = null;
+        String sql = null;
+
+        try {
+            //Hacemos la conexion a la BBDD
+            datasource = Conexion.crearConexion();
+            conexion = datasource.getConnection();
+
+            //obtenemos los valores del formulario
+            String anilla = request.getParameter("anilla");
+            String especie = request.getParameter("especie");
+            String lugar = request.getParameter("lugar");
+            String fecha = request.getParameter("fecha");
+            //preparamos la sentencia SQL
+            sql = "update aves set especie = ?, lugar = ?, fecha = ? where anilla = '" + anilla + "';";
+            preparedStatement = conexion.prepareStatement(sql);
+            //insertamos los valores
+            preparedStatement.setString(1, especie);
+            preparedStatement.setString(2, lugar);
+            preparedStatement.setString(3, fecha);
+            preparedStatement.executeUpdate();
+
+            //cerramos conexion
+            Conexion.cerrarConexion(conexion);
+
+            url = "JSP/update/finActualizar.jsp";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        request.getRequestDispatcher(url).forward(request, response);
+    }
+
+    /**
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     * 
+     * Este método elimina las aves seleccionadas
+     */
+    public void eliminar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String url = null;
+        DataSource datasource = null;
+        Connection conexion = null;
+        PreparedStatement preparedStatement = null;
+        String sql = null;
+
+        try {
+            //Hacemos la conexion a la BBDD
+            datasource = Conexion.crearConexion();
+            conexion = datasource.getConnection();
+            //obtenemos los valores del formulario
+            String anilla = request.getParameter("anilla");
+            //preparamos la sentencia SQL
+            sql = "delete from aves where anilla = '"+anilla+"'";
+            preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.executeUpdate();
+
+            //NO FUNCIONA!!!
+            
+            //cerramos conexion
+            Conexion.cerrarConexion(conexion);
+
+            url = "JSP/delete/finEliminar.jsp";
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        request.getRequestDispatcher(url).forward(request, response);
+    }
+
+}//fin clase

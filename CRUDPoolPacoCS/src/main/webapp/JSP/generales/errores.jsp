@@ -1,6 +1,6 @@
 <%-- 
-    Document   : insertar
-    Created on : 22 oct. 2018, 19:30:49
+    Document   : errores.jsp
+    Created on : 24 oct. 2018, 17:40:04
     Author     : paco
 --%>
 
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Vas a insertar...</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <h1>¿ESTÁS SEGURO QUE QUIERES CREAR ESTE AVE?</h1>
+        <h1>Hello World!</h1>
     </body>
 </html>

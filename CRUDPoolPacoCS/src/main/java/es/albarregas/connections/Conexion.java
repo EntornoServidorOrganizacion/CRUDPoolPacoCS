@@ -16,11 +16,13 @@ import javax.sql.DataSource;
  *
  * @author paco
  */
+//SE USA EN CONCLUIR, OPERACIÓN, REALIZAR
 public class Conexion {
-    static DataSource datasource;
-    
+
     //crear conexion con la base de datos
-    public static Connection crearConexion() throws SQLException{
+    public static DataSource crearConexion() throws SQLException{
+    //public static Connection crearConexion() throws SQLException{
+    DataSource datasource = null;
         try {
             Context contextoInicial = new InitialContext();
             datasource = (DataSource) contextoInicial.lookup("java:comp/env/jdbc/nombre-jndi");
@@ -29,11 +31,16 @@ public class Conexion {
             ex.printStackTrace();
         }
         
-        return datasource.getConnection();
+        //return datasource.getConnection();
+        return datasource;
     }
     
     //cerrar la conexion con la base de datos
     public static void cerrarConexion(Connection connection) throws SQLException{
         connection.close();
+    }
+
+    public static DataSource conectar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
