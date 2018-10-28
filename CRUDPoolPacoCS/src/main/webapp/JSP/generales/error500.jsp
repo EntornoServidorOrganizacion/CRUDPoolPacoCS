@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body id="error500">
+        <form action="ControladorFinal" method="post">
+            <button  type="submit" value="menu" name="operacion" style='width:200px; height:100px'>Menú</button>
+        </form>
         <img src="IMG/error500.jpg"/>
+        
     </body>
 </html>
